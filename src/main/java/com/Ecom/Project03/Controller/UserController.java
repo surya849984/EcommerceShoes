@@ -37,10 +37,26 @@ public class UserController {
         }
     }
 
-    @GetMapping("/admin")
-    public String admin(Model model) {
-        UserEntity admin = userRepository.findByUsername("admin");
-        model.addAttribute("admin", admin);
-        return "admin";
+    @GetMapping("/admin/login")
+    public String showAdminLoginForm() {
+        return "admin-login";
+    }
+
+    @PostMapping("/admin/login")
+    public String adminLogin(@RequestParam("username") String username, @RequestParam("password") String password) {
+        // Perform authentication logic here for admin login
+        if (username.equals("admin") && password.equals("admin123")) {
+            // Successful login
+            return "admin-home";
+        } else {
+            // Invalid credentials
+            return "redirect:/admin/login?error";
+        }
+    }
+
+    @GetMapping("/admin/home")
+    public String adminHome(Model model) {
+        // Add any necessary data to the model
+        return "admin-home";
     }
 }

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+</head>
+<body>
+    <h1>Welcome to the Admin Dashboard</h1>
+
+    <h2>Change Admin Password</h2>
+    <form action="/admin/change-password" method="post">
+        <label for="currentPassword">Current Password:</label>
+        <input type="password" id="currentPassword" name="currentPassword" required><br>
+        
+        <label for="newPassword">New Password:</label>
+        <input type="password" id="newPassword" name="newPassword" required><br>
+        
+        <label for="confirmPassword">Confirm New Password:</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" required><br>
+        
+        <input type="submit" value="Change Password">
+    </form>
+
+    <h2>Search Users</h2>
+    <form action="/admin/search-users" method="get">
+        <label for="searchQuery">Search Query:</label>
+        <input type="text" id="searchQuery" name="searchQuery" required><br>
+        
+        <input type="submit" value="Search">
+    </form>
+
+    <h2>Manage Products</h2>
+    <!-- Add code for managing products (e.g., add, edit, delete) -->
+
+    <h2>Purchase Reports</h2>
+    <!-- Add code for displaying purchase reports -->
+
+</body>
+</html>
