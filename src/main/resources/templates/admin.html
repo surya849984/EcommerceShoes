@@ -1,13 +1,29 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html>
 <head>
     <meta charset="UTF-8">
-    <title>Admin Page</title>
+    <title>Admin Dashboard</title>
+  
 </head>
 <body>
-    <h2>Welcome, Admin!</h2>
-    <!-- Display admin information -->
-    <p>Username: <span th:text="${admin.username}"></span></p>
-    <p>Password: <span th:text="${admin.password}"></span></p>
-</body>
-</html>
+    <h1>Welcome to the Admin Dashboard</h1>
+
+    <h2>Change Admin Password</h2>
+    
+    <form action="/admin" method="post">
+        <label for="currentPassword">Current Password:</label>
+        <input type="password" id="currentPassword" name="currentPassword" required><br>
+        
+        <label for="newPassword">New Password:</label>
+        <input type="password" id="newPassword" name="newPassword" required><br>
+        
+        <label for="confirmPassword">Confirm New Password:</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" required><br>
+        
+        <input type="submit" value="Change Password">
+    
+    </form>
+      <p th:if="${param.succuss}" style="color: green;">Password changed succussfull</p>
+       <p th:if="${param.error}" style="color: red;">confirm password mismatch </p>
+        <p th:if="${param.invalid}" style="color: pink;">invalid password </p>
+      </body></html>

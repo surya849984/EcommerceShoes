@@ -1,25 +1,73 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html>
 <head>
     <meta charset="UTF-8">
-    <title>Admin Login</title>
+    <title>Admin Dashboard</title>
+  
 </head>
 <body>
-    <h2>Admin Login</h2>
-    <form action="/admin/login" method="post">
-        <div>
-            <label for="username">Adminname:</label>
-            <input type="text" id="username" name="username" required>
-        </div>
-        <div>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-        </div>
-        <div>
-            <button type="submit">Login</button>
-        </div>
+    <h1>Welcome to the Admin Dashboard</h1>
+
+    <h2>Change Admin Password</h2>
+    
+    <form action="/admin" method="post">
+        <label for="currentPassword">Current Password:</label>
+        <input type="password" id="currentPassword" name="currentPassword" required><br>
+        
+        <label for="newPassword">New Password:</label>
+        <input type="password" id="newPassword" name="newPassword" required><br>
+        
+        <label for="confirmPassword">Confirm New Password:</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" required><br>
+        
+        <input type="submit" value="Change Password">
+    
     </form>
-    <!-- Display error message if login fails -->
-    <p th:if="${param.error}" style="color: red;">Invalid Admin details.</p>
+            
+    
+    <h2>Search Users</h2>
+    <form action="/admin/search-users" method="get">
+        <!-- User search form -->
+    </form>
+
+    <h2>Manage Products</h2>
+    <h3>Add Product</h3>
+    <form action="/admin/add-product" method="post" enctype="multipart/form-data">
+        <label for="productName">Product Name:</label>
+        <input type="text" id="productName" name="productName" required><br>
+        
+        <label for="productDescription">Product Description:</label>
+        <textarea id="productDescription" name="productDescription" required></textarea><br>
+        
+        <label for="productPrice">Product Price:</label>
+        <input type="number" id="productPrice" name="productPrice" required><br>
+        
+        <label for="productImage">Product Image:</label>
+        <input type="file" id="productImage" name="productImage" accept="image/*" required><br>
+        
+        <input type="submit" value="Add Product">
+    </form>
+
+    <h3>Edit Product</h3>
+    <form action="/admin/edit-product" method="post">
+        <label for="productId">Product ID:</label>
+        <input type="text" id="productId" name="productId" required><br>
+        
+        <!-- Add fields for editing product details -->
+        
+        <input type="submit" value="Edit Product">
+    </form>
+
+    <h3>Delete Product</h3>
+    <form action="/admin/delete-product" method="post">
+        <label for="productId">Product ID:</label>
+        <input type="text" id="productId" name="productId" required><br>
+        
+        <input type="submit" value="Delete Product">
+    </form>
+
+    <h2>Purchase Reports</h2>
+    <!-- Add code for displaying purchase reports -->
+
 </body>
 </html>
