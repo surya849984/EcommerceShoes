@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Management</title>
+</head>
+<body>
+    <h1>User Management</h1>
+
+    <!-- Search form -->
+    <form>
+        <input type="text" id="searchInput" placeholder="Search user">
+        <button type="button" onclick="searchUsers()">Search</button>
+    </form>
+
+    <!-- User list -->
+    <h2>User List</h2>
+    <table id="userTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <!-- Add more columns as needed -->
+            </tr>
+        </thead>
+        <tbody id="userTableBody">
+            <!-- User rows will be dynamically added here -->
+        </tbody>
+    </table>
+
+    <script>
+        function searchUsers() {
+            // Get the search keyword
+            var keyword = document.getElementById("searchInput").value;
+
+            // Perform the search using AJAX or other means
+            // Here, you can make an AJAX request to the server to retrieve the list of users based on the search keyword
+            // Once you have the response, you can populate the user table with the data
+
+            // Dummy code to populate the table with static data for demonstration purposes
+            var users = [
+                { id: 1, username: "surya" },
+                { id: 2, username: "swetha" },
+                { id: 3, username: "sofia" }
+            ];
+
+            var tableBody = document.getElementById("userTableBody");
+            tableBody.innerHTML = ""; // Clear the table body
+
+            // Loop through the users and generate table rows
+            for (var i = 0; i < users.length; i++) {
+                var user = users[i];
+
+                var row = document.createElement("tr");
+
+                var idCell = document.createElement("td");
+                idCell.textContent = user.id;
+                row.appendChild(idCell);
+
+                var usernameCell = document.createElement("td");
+                usernameCell.textContent = user.username;
+                row.appendChild(usernameCell);
+
+                tableBody.appendChild(row);
+            }
+        }
+    </script>
+</body>
+</html>

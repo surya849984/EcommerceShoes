@@ -35,7 +35,7 @@ public class UserController {
         }
         else if (username.equals("admin") && password.equals("admin123")) {
             // Successful login
-            return "admin-login";
+            return "Admin-dashboard";
         }
         
          else {
