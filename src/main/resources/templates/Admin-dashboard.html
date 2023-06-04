@@ -9,9 +9,33 @@
  <h2>
     <a href="change-password">Change Admin Password</a><br>
     <a href="search-users">Search Users</a><br>
-    <a href="manage-products">Manage Products</a><br>
+    <a href="/products/list" id="manage-products-link">Manage Products</a><br>
     <a href="purchase-report">Purchase Report</a><br>
-    
-</h2>
+ </h2>
+
+ <script>
+   function showOptions(event) {
+     event.preventDefault(); // Prevent the default link behavior
+     
+     var optionsDiv = document.getElementById("options");
+     optionsDiv.style.display = "block";
+   }
+ </script>
+
+ <div id="options" style="display: none;">
+   <h3>Manage Products Options:</h3>
+   <ul>
+     <li><a href="/products/list">View Full List</a></li>
+     <li><a href="/products/add">Add Product</a></li>
+     <li><a href="/products/edit">Edit Product</a></li>
+     <li><a href="/products/delete">Delete Product</a></li>
+   </ul>
+ </div>
+
+ <script>
+   var manageProductsLink = document.getElementById("manage-products-link");
+   manageProductsLink.addEventListener("click", showOptions);
+ </script>
+
 </body>
 </html>
