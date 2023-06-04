@@ -23,8 +23,8 @@
       <td th:text="${product.price}"></td>
       <td th:text="${product.description}"></td>
       <td>
-        <a href="/products/edit/{id}" th:href="@{'/products/edit/' + ${product.id}}">Edit</a>
-        <a href="/products/delete/{id}" th:href="@{'/products/delete/' + ${product.id}}">Delete</a>
+        <a href="#" th:href="@{'/products/edit/' + ${product.id}}">Edit</a>
+        <a href="#" th:href="@{'/products/delete/' + ${product.id}}">Delete</a>
       </td>
     </tr>
   </table>

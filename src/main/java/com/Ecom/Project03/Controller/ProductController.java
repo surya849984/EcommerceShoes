@@ -25,7 +25,7 @@ public class ProductController {
 
     @GetMapping("/add")
     public String showAddForm(Model model) {
-        model.addAttribute("product", new ProductEntity(null, null, null, null));
+        model.addAttribute("product", new ProductEntity());
         return "product/add";
     }
 
@@ -35,7 +35,7 @@ public class ProductController {
         return "redirect:/products/list";
     }
 
-    @GetMapping("/edit")
+    @GetMapping("/edit/{id}")
     public String showEditForm(@PathVariable("id") Long id, Model model) {
         ProductEntity product = productService.getProductById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid product Id: " + id));
@@ -44,8 +44,17 @@ public class ProductController {
     }
 
     @PostMapping("/edit/{id}")
-    public String updateProduct(@PathVariable("id") Long id, @ModelAttribute("product") ProductEntity product) {
-        productService.updateProduct(product);
+    public String updateProduct(@PathVariable("id") Long id, @ModelAttribute("product") ProductEntity updatedProduct) {
+        updatedProduct.setId(id);
+        ProductEntity existingProduct = productService.getProductById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid product Id: " + id));
+
+        // Update the properties of the existing product with the updated values
+        existingProduct.setName(updatedProduct.getName());
+        existingProduct.setPrice(updatedProduct.getPrice());
+        existingProduct.setDescription(updatedProduct.getDescription());
+
+        productService.updateProduct(updatedProduct);
         return "redirect:/products/list";
     }
 
